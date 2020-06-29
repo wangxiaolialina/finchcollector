@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # Add the following import
-from django.http import HttpResponse
+from django.views.generic.edit import CreateView
 from .models import Finch
 
 # Define the home view
@@ -20,3 +20,7 @@ def finches_index(request):
 def finches_detail(request,finch_id):
     finch = Finch.objects.get(id=finch_id)
     return render(request,'finches/detail.html', {'finch':finch})
+
+class FinchCreate(CreateView):
+  model = Finch
+  fields = '__all__'
