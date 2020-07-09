@@ -85,3 +85,11 @@ class ToyDetail(LoginRequiredMixin, DetailView):
 class ToyCreate(LoginRequiredMixin, CreateView):
   model = Toy
   fields = '__all__'
+
+class ToyUpdate(LoginRequiredMixin, UpdateView):
+  model = Toy
+  fields = ['name', 'color']
+
+class ToyDelete(LoginRequiredMixin, DeleteView):
+  model = Toy
+  success_url = '/toys/'
