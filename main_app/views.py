@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 # Add the following import
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
@@ -74,3 +76,12 @@ def assoc_toy(request, finch_id, toy_id):
   Cat.objects.get(id=finch_id).toys.add(toy_id)
   return redirect('detail', finch_id=cat_id)
 
+class ToyList(LoginRequiredMixin, ListView):
+  model = Toy
+
+class ToyDetail(LoginRequiredMixin, DetailView):
+  model = Toy
+
+class ToyCreate(LoginRequiredMixin, CreateView):
+  model = Toy
+  fields = '__all__'
