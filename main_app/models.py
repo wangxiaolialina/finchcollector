@@ -26,7 +26,7 @@ class Feeding(models.Model):
     choices=MEALS,
     default=MEALS[0][0]
   )
-  cat = models.ForeignKey(Finch, on_delete=models.CASCADE)
+  finch = models.ForeignKey(Finch, on_delete=models.CASCADE)
 
   def __str__(self):
     # Nice method for obtaining the friendly value of a Field.choice
