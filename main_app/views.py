@@ -47,3 +47,8 @@ def add_feeding(request, finch_id):
     new_feeding.finch_id = finch_id
     new_feeding.save()
   return redirect('detail', finch_id=finch_id)
+
+def assoc_toy(request, finch_id, toy_id):
+  # Note that you can pass a toy's id instead of the whole object
+  Cat.objects.get(id=finch_id).toys.add(toy_id)
+  return redirect('detail', finch_id=cat_id)
